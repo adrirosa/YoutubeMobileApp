@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
-    private final Videos videos;
+    private List<VideoItem.ItemsBean> itemsBeen;
     private OnVideoSelectedListener onVideoSelectedListener;
 
-    public VideoAdapter(Videos videos) {
-        this.videos = videos;
+    public VideoAdapter(List<VideoItem.ItemsBean> itemsBeen) {
+        this.itemsBeen = itemsBeen;
     }
 
     @Override
@@ -23,12 +25,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
     @Override
     public void onBindViewHolder(VideoViewHolder holder, int position) {
         holder.setOnVideoSelectedListener(onVideoSelectedListener);
-        holder.bind(videos.get(position));
+        holder.bind(itemsBeen.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return videos != null ? videos.size() : 0;
+        return itemsBeen != null ? itemsBeen.size() : 0;
     }
 
     public void setOnVideoSelectedListener(OnVideoSelectedListener onVideoSelectedListener) {
